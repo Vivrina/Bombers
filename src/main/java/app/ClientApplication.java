@@ -27,10 +27,10 @@ public class ClientApplication extends Application {
 
 
         primaryStage.setTitle("Bombers");
-//        primaryStage.setResizable(false);
         primaryStage.setScene(scene);
-//        MainController mainController = fxmlLoader.getController();
-//        scene.setOnKeyPressed(mainController.getPlayerControlEvent());
+        primaryStage.setMaximized(true);
+        primaryStage.setFullScreen(true);
+
 
 
         primaryStage.show();
