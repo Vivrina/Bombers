@@ -52,8 +52,37 @@
                 <padding>
                     <Insets left="360" />
                 </padding>
-                <Button fx:id="doneButtonN"  stylesheets="/css/button.css" prefHeight="93.0" prefWidth="271.0" onAction="#rightCharacter" />
+                <Button fx:id="doneButtonN"  stylesheets="/css/button.css" prefHeight="93.0" prefWidth="271.0" onAction="#pressTwoReadyButton" />
             </HBox>
+        </VBox>
+        <VBox fx:id="MapPV">
+            <padding>
+                <Insets top="85" left="120" />
+            </padding>
+            <HBox fx:id="MapPH1">
+                <ImageView fx:id="brown1"  fitWidth="96.0" fitHeight="98.0"/>
+                <ImageView fx:id="brown2"  fitWidth="96.0" fitHeight="98.0"/>
+                
+
+            </HBox>
+            <HBox fx:id="MapPH2">
+            </HBox>
+            <HBox fx:id="MapPH3">
+            </HBox>
+            <HBox fx:id="MapPH4">
+            </HBox>
+            <HBox fx:id="MapPH5">
+            </HBox>
+            <HBox fx:id="MapPH6">
+            </HBox>
+            <HBox fx:id="MapPH7">
+            </HBox>
+            <HBox fx:id="MapPH8">
+            </HBox>
+            <HBox fx:id="MapPH9">
+            </HBox>
+
+
         </VBox>
 
     </StackPane>
