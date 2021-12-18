@@ -2,12 +2,19 @@ package controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
+
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -54,52 +61,7 @@ public class MainController implements Initializable {
     private ImageView map;
 
     @FXML
-    private ImageView brown1;
-
-    @FXML
-    private ImageView brown2;
-
-    @FXML
-    private ImageView brown3;
-
-    @FXML
-    private ImageView brown4;
-
-    @FXML
-    private ImageView brown5;
-
-    @FXML
-    private ImageView green1;
-
-    @FXML
-    private VBox MapPV;
-
-    @FXML
-    private HBox MapPH1;
-
-    @FXML
-    private HBox MapPH2;
-
-    @FXML
-    private HBox MapPH3;
-
-    @FXML
-    private HBox MapPH4;
-
-    @FXML
-    private HBox MapPH5;
-
-    @FXML
-    private HBox MapPH6;
-
-    @FXML
-    private HBox MapPH7;
-
-    @FXML
-    private HBox MapPH8;
-
-    @FXML
-    private HBox MapPH9;
+    public StackPane menu;
 
     private static final List<String> cats =
             Arrays.asList("src/main/resources/img/cat/fat1.png", "src/main/resources/img/cat/fat2.png"
@@ -182,59 +144,35 @@ public class MainController implements Initializable {
 
     @FXML
     public void pressTwoReadyButton (ActionEvent event) throws Exception{
-        bg.setImage(new Image(new FileInputStream("src/main/resources/img/bg4.png")));
-        MapV.setVisible(false);
-        MapPV.setVisible(true);
-        MapPH1.setVisible(true);
-        MapPH2.setVisible(true);
-        MapPH3.setVisible(true);
-        MapPH4.setVisible(true);
-        MapPH5.setVisible(true);
-        MapPH6.setVisible(true);
-        MapPH7.setVisible(true);
-        MapPH8.setVisible(true);
-        MapPH9.setVisible(true);
-
+        Node node=(Node) event.getSource();
+        Stage stage=(Stage) node.getScene().getWindow();
+        Parent root = FXMLLoader.load(getClass().getResource("/fxml/MapOne.fxml"));
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.setMaximized(true);
+        stage.setFullScreen(true);
+        stage.show();
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        menu.setVisible(true);
         CatV.setVisible(false);
         CatV.setSpacing(50);
         CatH.setSpacing(200);
         MapV.setVisible(false);
         MapV.setSpacing(50);
         MapH.setSpacing(200);
-        MapPV.setVisible(false);
-        MapPV.setSpacing(3);
-        MapPH1.setVisible(false);
-        MapPH1.setSpacing(3);
-
-        MapPH2.setVisible(false);
-        MapPH3.setVisible(false);
-        MapPH4.setVisible(false);
-        MapPH5.setVisible(false);
-        MapPH6.setVisible(false);
-        MapPH7.setVisible(false);
-        MapPH8.setVisible(false);
-        MapPH9.setVisible(false);
 
         try {
             cur_image = "src/main/resources/img/cat/fat1.png";
             cur_map = "src/main/resources/img/maps/map1.png";
-            brown = "src/main/resources/img/play/brown0.png";
-            green = "src/main/resources/img/play/green0.png";
 
 
             bg.setImage(new Image(new FileInputStream("src/main/resources/img/bg1.png")));
             cat.setImage(new Image(new FileInputStream(cur_image)));
             map.setImage(new Image(new FileInputStream(cur_map)));
-            brown1.setImage(new Image((new FileInputStream(brown))));
-            brown2.setImage(new Image(new FileInputStream(brown)));
-            brown3.setImage(new Image(new FileInputStream(brown)));
-            brown4.setImage(new Image(new FileInputStream(brown)));
-            brown5.setImage(new Image(new FileInputStream(brown)));
-            green1.setImage(new Image(new FileInputStream(green)));
+
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }

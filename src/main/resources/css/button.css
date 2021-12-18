@@ -25,3 +25,7 @@
 #doneButtonN {
     -fx-background-image: url("/img/done.png");
 }
+
+#readyButton {
+    -fx-background-image: url("/img/done.png");
+}

@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.scene.image.ImageView?>
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="controller.GameController"
+            prefHeight="1080.0" prefWidth="1920.0">
+
+    <HBox fx:id="game">
+        <VBox fx:id="messageControl1" >
+            <ScrollPane fx:id="messagesArea1" minWidth="420" minHeight="1080"
+                        maxWidth="420" maxHeight="1080">
+                <VBox fx:id="messages1">
+                    <children/>
+                </VBox>
+            </ScrollPane>
+            <HBox>
+                <TextField fx:id="messageText1" minWidth="400" accessibleText="Введите сообщение"/>
+            </HBox>
+            <Button fx:id="sendMessageButton1" text="Отправить сообщение"/>
+        </VBox>
+
+
+
+        <StackPane fx:id="gameArea" >
+            <ImageView fx:id="gameBG" fitWidth="1080" fitHeight="1080"/>
+            <GridPane>
+                <ImageView fx:id="brown1"  fitWidth="108.0" fitHeight="108.0" GridPane.rowIndex="12" GridPane.columnIndex="12"/>
+                <ImageView fx:id="brown2"  fitWidth="108.0" fitHeight="108.0" GridPane.rowIndex="12" GridPane.columnIndex="14"/>
+                <ImageView fx:id="brown3"  fitWidth="108.0" fitHeight="108.0" GridPane.rowIndex="14" GridPane.columnIndex="12"/>
+                <ImageView fx:id="brown4"  fitWidth="108.0" fitHeight="108.0" GridPane.rowIndex="4" GridPane.columnIndex="8"/>
+                <ImageView fx:id="brown5"  fitWidth="108.0" fitHeight="108.0" GridPane.rowIndex="4" GridPane.columnIndex="4"/>
+            </GridPane>
+        </StackPane>
+
+
+
+        <VBox fx:id="messageControl2" >
+            <ScrollPane fx:id="messagesArea2" minWidth="420" minHeight="1080"
+                        maxWidth="420" maxHeight="1080">
+                <VBox fx:id="messages2">
+                    <children/>
+                </VBox>
+            </ScrollPane>
+            <HBox>
+                <TextField fx:id="messageText2" minWidth="400" accessibleText="Введите сообщение"/>
+            </HBox>
+            <Button fx:id="sendMessageButton2" text="Отправить сообщение"/>
+        </VBox>
+    </HBox>
+
+<!--    <VBox fx:id="MapPV">-->
+<!--        <padding>-->
+<!--            <Insets top="85" left="120" />-->
+<!--        </padding>-->
+<!--        <HBox fx:id="MapPH1">-->
+<!--            <AnchorPane>-->
+<!--                <ImageView fx:id="brown1"  fitWidth="96.0" fitHeight="98.0"/>-->
+<!--                <ImageView fx:id="brown2" layoutX="99.0"  fitWidth="96.0" fitHeight="98.0"/>-->
+<!--                <ImageView fx:id="brown3" layoutX="494.0" fitWidth="96.0" fitHeight="98.0"/>-->
+<!--                <ImageView fx:id="brown4" layoutX="791.0" fitWidth="96.0" fitHeight="98.0"/>-->
+<!--                <ImageView fx:id="brown5" layoutX="1583.0" fitWidth="96.0" fitHeight="98.0"/>-->
+<!--            </AnchorPane>-->
+
+
+
+<!--        </HBox>-->
+<!--        <HBox fx:id="MapPH2">-->
+<!--            <AnchorPane>-->
+<!--                <ImageView fx:id="green1" layoutX="99.0" fitWidth="96.0" fitHeight="98.0"/>-->
+
+<!--                <ImageView fx:id="brown7" layoutX="99.0"  fitWidth="96.0" fitHeight="98.0"/>-->
+<!--                <ImageView fx:id="brown8" layoutX="494.0" fitWidth="96.0" fitHeight="98.0"/>-->
+<!--                <ImageView fx:id="brown9" layoutX="791.0" fitWidth="96.0" fitHeight="98.0"/>-->
+<!--                <ImageView fx:id="brown10" layoutX="1583.0" fitWidth="96.0" fitHeight="98.0"/>-->
+<!--            </AnchorPane>-->
+<!--        </HBox>-->
+<!--        <HBox fx:id="MapPH3">-->
+<!--        </HBox>-->
+<!--        <HBox fx:id="MapPH4">-->
+<!--        </HBox>-->
+<!--        <HBox fx:id="MapPH5">-->
+<!--        </HBox>-->
+<!--        <HBox fx:id="MapPH6">-->
+<!--        </HBox>-->
+<!--        <HBox fx:id="MapPH7">-->
+<!--        </HBox>-->
+<!--        <HBox fx:id="MapPH8">-->
+<!--        </HBox>-->
+<!--        <HBox fx:id="MapPH9">-->
+<!--            <AnchorPane>-->
+<!--            </AnchorPane>-->
+
+<!--        </HBox>-->
+
+
+<!--    </VBox>-->
+
+
+</AnchorPane>
