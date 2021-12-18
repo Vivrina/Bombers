@@ -31,24 +31,6 @@
         <StackPane fx:id="gameArea" >
             <ImageView fx:id="gameBG" fitWidth="1080" fitHeight="1080"/>
             <GridPane fx:id="gameTable">
-                <ImageView fx:id="empty1"  fitWidth="108.0" fitHeight="108.0" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
-                <ImageView fx:id="empty2"  fitWidth="108.0" fitHeight="108.0" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
-                <ImageView fx:id="empty3"  fitWidth="108.0" fitHeight="108.0" GridPane.rowIndex="0" GridPane.columnIndex="2"/>
-                <ImageView fx:id="empty4"  fitWidth="108.0" fitHeight="108.0" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
-                <ImageView fx:id="empty5"  fitWidth="108.0" fitHeight="108.0" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
-                <ImageView fx:id="empty6"  fitWidth="108.0" fitHeight="108.0" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
-                <ImageView fx:id="brown1"  fitWidth="108.0" fitHeight="108.0" GridPane.rowIndex="1" GridPane.columnIndex="2"/>
-                <ImageView fx:id="brown2"  fitWidth="108.0" fitHeight="108.0" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
-                <ImageView fx:id="brown3"  fitWidth="108.0" fitHeight="108.0" GridPane.rowIndex="2" GridPane.columnIndex="2"/>
-                <ImageView fx:id="brown4"  fitWidth="108.0" fitHeight="108.0" GridPane.rowIndex="4" GridPane.columnIndex="0"/>
-                <ImageView fx:id="brown5"  fitWidth="108.0" fitHeight="108.0" GridPane.rowIndex="1" GridPane.columnIndex="3"/>
-                <ImageView fx:id="brown6"  fitWidth="108.0" fitHeight="108.0" GridPane.rowIndex="2" GridPane.columnIndex="3"/>
-                <ImageView fx:id="grey1"  fitWidth="108.0" fitHeight="108.0" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
-                <ImageView fx:id="grey2"  fitWidth="108.0" fitHeight="108.0" GridPane.rowIndex="0" GridPane.columnIndex="4"/>
-                <ImageView fx:id="grey3"  fitWidth="108.0" fitHeight="108.0" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
-                <ImageView fx:id="grey4"  fitWidth="108.0" fitHeight="108.0" GridPane.rowIndex="3" GridPane.columnIndex="2"/>
-                <ImageView fx:id="grey5"  fitWidth="108.0" fitHeight="108.0" GridPane.rowIndex="2" GridPane.columnIndex="4"/>
-                <ImageView fx:id="grey6"  fitWidth="108.0" fitHeight="108.0" GridPane.rowIndex="4" GridPane.columnIndex="2"/>
             </GridPane>
         </StackPane>
 

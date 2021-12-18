@@ -9,6 +9,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.util.Pair;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -18,12 +19,16 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 public class GameController implements Initializable {
-    private static String cur_image;
-    private static String cur_map;
     private static String brown = "src/main/resources/img/play/brown.png";
     private static String grey = "src/main/resources/img/play/grey.png";
     private static String empty = "src/main/resources/img/play/empty.png";
-    private static String green;
+
+    private static final List<Pair<Integer, Integer>> greyBlocks =
+            Arrays.asList(new Pair<>(2,2), new Pair<>(2,4), new Pair<>(2,5), new Pair<>(2,8), new Pair<>(2,9),
+                    new Pair<>(1,8), new Pair<>(4,2), new Pair<>(4,7), new Pair<>(4,8), new Pair<>(4,6),
+                    new Pair<>(4,10), new Pair<>(5,8), new Pair<>(7,9), new Pair<>(6,4), new Pair<>(7,1),
+                    new Pair<>(7,4), new Pair<>(7,5), new Pair<>(7,6), new Pair<>(9,2), new Pair<>(9,3),
+                    new Pair<>(9,6), new Pair<>(9,7), new Pair<>(9,9), new Pair<>(10,3));
 
     @FXML
     public HBox game;
@@ -34,122 +39,36 @@ public class GameController implements Initializable {
     @FXML
     public GridPane gameTable;
 
-    @FXML
-    private ImageView grey1;
-
-    @FXML
-    private ImageView grey2;
-
-    @FXML
-    private ImageView grey3;
-
-    @FXML
-    private ImageView grey4;
-
-    @FXML
-    private ImageView grey5;
-
-    @FXML
-    private ImageView grey6;
-
-    @FXML
-    private ImageView brown1;
-
-    @FXML
-    private ImageView brown2;
-
-    @FXML
-    private ImageView brown3;
-
-    @FXML
-    private ImageView brown4;
-
-    @FXML
-    private ImageView brown5;
-
-    @FXML
-    private ImageView brown6;
-
-    @FXML
-    private ImageView empty1;
-
-    @FXML
-    private ImageView empty2;
-
-    @FXML
-    private ImageView empty3;
-
-    @FXML
-    private ImageView empty4;
-
-    @FXML
-    private ImageView empty5;
-
-    @FXML
-    private ImageView empty6;
-
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-//        CatV.setVisible(false);
-//        CatV.setSpacing(50);
-//        CatH.setSpacing(200);
-//        MapV.setVisible(false);
-//        MapV.setSpacing(50);
-//        MapH.setSpacing(200);
-//        MapPV.setVisible(false);
-//        MapPV.setSpacing(3);
-//        MapPH1.setVisible(false);
-//        MapPH1.setSpacing(3);
-//
-//        MapPH2.setVisible(false);
-//        MapPH3.setVisible(false);
-//        MapPH4.setVisible(false);
-//        MapPH5.setVisible(false);
-//        MapPH6.setVisible(false);
-//        MapPH7.setVisible(false);
-//        MapPH8.setVisible(false);
-//        MapPH9.setVisible(false);
 
         try {
             gameBG.setImage(new Image(new FileInputStream("src/main/resources/img/gameBG.jpg")));
-            grey1.setImage(new Image((new FileInputStream(grey))));
-            grey2.setImage(new Image((new FileInputStream(grey))));
-            grey3.setImage(new Image((new FileInputStream(grey))));
-            grey4.setImage(new Image((new FileInputStream(grey))));
-            grey5.setImage(new Image((new FileInputStream(grey))));
-            grey6.setImage(new Image((new FileInputStream(grey))));
-            brown1.setImage(new Image((new FileInputStream(brown))));
-            brown2.setImage(new Image((new FileInputStream(brown))));
-            brown3.setImage(new Image((new FileInputStream(brown))));
-            brown4.setImage(new Image((new FileInputStream(brown))));
-            brown5.setImage(new Image((new FileInputStream(brown))));
-            brown6.setImage(new Image((new FileInputStream(brown))));
-            empty1.setImage(new Image((new FileInputStream(empty))));
-            empty2.setImage(new Image((new FileInputStream(empty))));
-            empty3.setImage(new Image((new FileInputStream(empty))));
-            empty4.setImage(new Image((new FileInputStream(empty))));
-            empty5.setImage(new Image((new FileInputStream(empty))));
-            empty6.setImage(new Image((new FileInputStream(empty))));
 
-//            for(int i = 0; i < 10; i++){
-//                for(int j = 0; j < 10; j++) {
-//                    gameTable.add(empty1, i, j);
-//                    if((i==0 || j==0) || (i==9 || j==9)) {
-//                        gameTable.add(grey1, i, j);
-//                    }
-//                }
-//            }
-//            green = "src/main/resources/img/play/green0.png";
-//
-//
-//            bg.setImage(new Image(new FileInputStream("src/main/resources/img/bg1.png")));
-//            cat.setImage(new Image(new FileInputStream(cur_image)));
-//            map.setImage(new Image(new FileInputStream(cur_map)));
-//            brown2.setImage(new Image(new FileInputStream(brown)));
-//            brown3.setImage(new Image(new FileInputStream(brown)));
-//            brown4.setImage(new Image(new FileInputStream(brown)));
-//            brown5.setImage(new Image(new FileInputStream(brown)));
-//            green1.setImage(new Image(new FileInputStream(green)));
+            for(int i = 0; i < 12; i++){
+                for(int j = 0; j < 12; j++) {
+                    ImageView emptyBlock = new ImageView();
+                    emptyBlock.setImage(new Image((new FileInputStream(empty))));
+                    emptyBlock.setFitHeight(90.00);
+                    emptyBlock.setFitWidth(90.00);
+                    gameTable.add(emptyBlock, i, j);
+                    if((i==0 || j==0) || (i==11 || j==11)) {
+                        ImageView greyBlock = new ImageView();
+                        greyBlock.setImage(new Image((new FileInputStream(grey))));
+                        greyBlock.setFitHeight(90.00);
+                        greyBlock.setFitWidth(90.00);
+                        gameTable.add(greyBlock, i, j);
+                    }
+                }
+            }
+
+            for(Pair<Integer, Integer> pair : greyBlocks){
+                ImageView greyBlock = new ImageView();
+                greyBlock.setImage(new Image((new FileInputStream(grey))));
+                greyBlock.setFitHeight(90.00);
+                greyBlock.setFitWidth(90.00);
+                gameTable.add(greyBlock, pair.getKey(), pair.getValue());
+            }
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
