@@ -6,6 +6,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
@@ -19,7 +20,9 @@ import java.util.ResourceBundle;
 public class GameController implements Initializable {
     private static String cur_image;
     private static String cur_map;
-    private static String brown;
+    private static String brown = "src/main/resources/img/play/brown.png";
+    private static String grey = "src/main/resources/img/play/grey.png";
+    private static String empty = "src/main/resources/img/play/empty.png";
     private static String green;
 
     @FXML
@@ -27,6 +30,27 @@ public class GameController implements Initializable {
 
     @FXML
     private ImageView gameBG;
+
+    @FXML
+    public GridPane gameTable;
+
+    @FXML
+    private ImageView grey1;
+
+    @FXML
+    private ImageView grey2;
+
+    @FXML
+    private ImageView grey3;
+
+    @FXML
+    private ImageView grey4;
+
+    @FXML
+    private ImageView grey5;
+
+    @FXML
+    private ImageView grey6;
 
     @FXML
     private ImageView brown1;
@@ -42,6 +66,27 @@ public class GameController implements Initializable {
 
     @FXML
     private ImageView brown5;
+
+    @FXML
+    private ImageView brown6;
+
+    @FXML
+    private ImageView empty1;
+
+    @FXML
+    private ImageView empty2;
+
+    @FXML
+    private ImageView empty3;
+
+    @FXML
+    private ImageView empty4;
+
+    @FXML
+    private ImageView empty5;
+
+    @FXML
+    private ImageView empty6;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -67,12 +112,33 @@ public class GameController implements Initializable {
 
         try {
             gameBG.setImage(new Image(new FileInputStream("src/main/resources/img/gameBG.jpg")));
-            brown = "src/main/resources/img/play/block.png";
+            grey1.setImage(new Image((new FileInputStream(grey))));
+            grey2.setImage(new Image((new FileInputStream(grey))));
+            grey3.setImage(new Image((new FileInputStream(grey))));
+            grey4.setImage(new Image((new FileInputStream(grey))));
+            grey5.setImage(new Image((new FileInputStream(grey))));
+            grey6.setImage(new Image((new FileInputStream(grey))));
             brown1.setImage(new Image((new FileInputStream(brown))));
             brown2.setImage(new Image((new FileInputStream(brown))));
             brown3.setImage(new Image((new FileInputStream(brown))));
             brown4.setImage(new Image((new FileInputStream(brown))));
             brown5.setImage(new Image((new FileInputStream(brown))));
+            brown6.setImage(new Image((new FileInputStream(brown))));
+            empty1.setImage(new Image((new FileInputStream(empty))));
+            empty2.setImage(new Image((new FileInputStream(empty))));
+            empty3.setImage(new Image((new FileInputStream(empty))));
+            empty4.setImage(new Image((new FileInputStream(empty))));
+            empty5.setImage(new Image((new FileInputStream(empty))));
+            empty6.setImage(new Image((new FileInputStream(empty))));
+
+//            for(int i = 0; i < 10; i++){
+//                for(int j = 0; j < 10; j++) {
+//                    gameTable.add(empty1, i, j);
+//                    if((i==0 || j==0) || (i==9 || j==9)) {
+//                        gameTable.add(grey1, i, j);
+//                    }
+//                }
+//            }
 //            green = "src/main/resources/img/play/green0.png";
 //
 //
