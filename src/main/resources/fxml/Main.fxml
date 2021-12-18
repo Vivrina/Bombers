@@ -60,12 +60,26 @@
                 <Insets top="85" left="120" />
             </padding>
             <HBox fx:id="MapPH1">
-                <ImageView fx:id="brown1"  fitWidth="96.0" fitHeight="98.0"/>
-                <ImageView fx:id="brown2"  fitWidth="96.0" fitHeight="98.0"/>
-                
+                <AnchorPane>
+                    <ImageView fx:id="brown1"  fitWidth="96.0" fitHeight="98.0"/>
+                    <ImageView fx:id="brown2" layoutX="99.0"  fitWidth="96.0" fitHeight="98.0"/>
+                    <ImageView fx:id="brown3" layoutX="494.0" fitWidth="96.0" fitHeight="98.0"/>
+                    <ImageView fx:id="brown4" layoutX="791.0" fitWidth="96.0" fitHeight="98.0"/>
+                    <ImageView fx:id="brown5" layoutX="1583.0" fitWidth="96.0" fitHeight="98.0"/>
+                </AnchorPane>
 
-            </HBox>
+
+
+        </HBox>
             <HBox fx:id="MapPH2">
+                <AnchorPane>
+                    <ImageView fx:id="green1" layoutX="99.0" fitWidth="96.0" fitHeight="98.0"/>
+
+                    <ImageView fx:id="brown7" layoutX="99.0"  fitWidth="96.0" fitHeight="98.0"/>
+                    <ImageView fx:id="brown8" layoutX="494.0" fitWidth="96.0" fitHeight="98.0"/>
+                    <ImageView fx:id="brown9" layoutX="791.0" fitWidth="96.0" fitHeight="98.0"/>
+                    <ImageView fx:id="brown10" layoutX="1583.0" fitWidth="96.0" fitHeight="98.0"/>
+                </AnchorPane>
             </HBox>
             <HBox fx:id="MapPH3">
             </HBox>
@@ -80,6 +94,9 @@
             <HBox fx:id="MapPH8">
             </HBox>
             <HBox fx:id="MapPH9">
+                <AnchorPane>
+                </AnchorPane>
+
             </HBox>
 
 

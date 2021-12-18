@@ -12,6 +12,7 @@ import javafx.scene.layout.VBox;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -20,6 +21,7 @@ public class MainController implements Initializable {
     private static String cur_image;
     private static String cur_map;
     private static String brown;
+    private static String green;
 
     @FXML
     public Button mainButton;
@@ -58,6 +60,18 @@ public class MainController implements Initializable {
     private ImageView brown2;
 
     @FXML
+    private ImageView brown3;
+
+    @FXML
+    private ImageView brown4;
+
+    @FXML
+    private ImageView brown5;
+
+    @FXML
+    private ImageView green1;
+
+    @FXML
     private VBox MapPV;
 
     @FXML
@@ -94,6 +108,7 @@ public class MainController implements Initializable {
     private static final List<String> maps =
             Arrays.asList("src/main/resources/img/maps/map1.png", "src/main/resources/img/maps/map2.png"
                     , "src/main/resources/img/maps/map3.png", "src/main/resources/img/maps/map4.png");
+
 
 
     @FXML
@@ -171,6 +186,15 @@ public class MainController implements Initializable {
         MapV.setVisible(false);
         MapPV.setVisible(true);
         MapPH1.setVisible(true);
+        MapPH2.setVisible(true);
+        MapPH3.setVisible(true);
+        MapPH4.setVisible(true);
+        MapPH5.setVisible(true);
+        MapPH6.setVisible(true);
+        MapPH7.setVisible(true);
+        MapPH8.setVisible(true);
+        MapPH9.setVisible(true);
+
     }
 
     @Override
@@ -182,6 +206,7 @@ public class MainController implements Initializable {
         MapV.setSpacing(50);
         MapH.setSpacing(200);
         MapPV.setVisible(false);
+        MapPV.setSpacing(3);
         MapPH1.setVisible(false);
         MapPH1.setSpacing(3);
 
@@ -198,11 +223,18 @@ public class MainController implements Initializable {
             cur_image = "src/main/resources/img/cat/fat1.png";
             cur_map = "src/main/resources/img/maps/map1.png";
             brown = "src/main/resources/img/play/brown0.png";
+            green = "src/main/resources/img/play/green0.png";
+
+
             bg.setImage(new Image(new FileInputStream("src/main/resources/img/bg1.png")));
             cat.setImage(new Image(new FileInputStream(cur_image)));
             map.setImage(new Image(new FileInputStream(cur_map)));
             brown1.setImage(new Image((new FileInputStream(brown))));
             brown2.setImage(new Image(new FileInputStream(brown)));
+            brown3.setImage(new Image(new FileInputStream(brown)));
+            brown4.setImage(new Image(new FileInputStream(brown)));
+            brown5.setImage(new Image(new FileInputStream(brown)));
+            green1.setImage(new Image(new FileInputStream(green)));
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
