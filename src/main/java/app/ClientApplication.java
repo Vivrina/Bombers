@@ -1,5 +1,6 @@
 package app;
 
+import controller.GameController;
 import controller.MainController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -23,19 +24,10 @@ public class ClientApplication extends Application {
         FXMLLoader fxmlLoader = new FXMLLoader();
         Parent root = fxmlLoader.load(getClass().getResourceAsStream(FXML_FILE_NAME));
         Scene scene = new Scene(root);
-
-
-
         primaryStage.setTitle("Bombers");
         primaryStage.setScene(scene);
         primaryStage.setMaximized(true);
         primaryStage.setFullScreen(true);
-
-
-
         primaryStage.show();
-
-
-
     }
 }

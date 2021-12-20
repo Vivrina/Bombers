@@ -7,12 +7,12 @@
 <?import javafx.scene.layout.*?>
 
 <?import javafx.scene.image.ImageView?>
-<AnchorPane xmlns="http://javafx.com/javafx"
+<AnchorPane fx:id="gameZone" xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="controller.GameController"
             prefHeight="1080.0" prefWidth="1920.0">
 
-    <HBox fx:id="game">
+    <HBox fx:id="game" prefHeight="1080.0" prefWidth="1080.0">
         <VBox fx:id="messageControl1" >
             <ScrollPane fx:id="messagesArea1" minWidth="420" minHeight="1080"
                         maxWidth="420" maxHeight="1080">
@@ -29,8 +29,9 @@
 
 
         <StackPane fx:id="gameArea" >
-            <ImageView fx:id="gameBG" fitWidth="1080" fitHeight="1080"/>
             <GridPane fx:id="gameTable">
+<!--                <ImageView fx:id="player1"  fitWidth="90.0" fitHeight="90.0" GridPane.columnIndex="1" GridPane.rowIndex="10"/>-->
+<!--                <ImageView fx:id="player2"  fitWidth="90.0" fitHeight="90.0" GridPane.columnIndex="10" GridPane.rowIndex="1"/>-->
             </GridPane>
         </StackPane>
 

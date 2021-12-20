@@ -1,6 +1,7 @@
 package controller;
 
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -10,6 +11,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
@@ -147,15 +149,20 @@ public class MainController implements Initializable {
 
     @FXML
     public void pressTwoReadyButton (ActionEvent event) throws Exception{
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/MapOne.fxml"));
         Node node=(Node) event.getSource();
         Stage stage=(Stage) node.getScene().getWindow();
-        Parent root = FXMLLoader.load(getClass().getResource("/fxml/MapOne.fxml"));
+        Parent root = fxmlLoader.load();
+
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.setMaximized(true);
         stage.setFullScreen(true);
+        GameController gameController = fxmlLoader.getController();
+        scene.setOnKeyPressed(gameController.getPlayerControlEvent());
         stage.show();
     }
+
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -180,4 +187,6 @@ public class MainController implements Initializable {
             e.printStackTrace();
         }
     }
+
+
 }
