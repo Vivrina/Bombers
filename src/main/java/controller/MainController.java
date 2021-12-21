@@ -17,6 +17,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import sockets.ClientSocket;
 
 
 import java.io.FileInputStream;
@@ -32,6 +33,8 @@ public class MainController implements Initializable {
     private static String cur_map;
     private static String brown;
     private static String green;
+
+    private ClientSocket clientSocket;
 
     @FXML
     public Button mainButton;
@@ -159,6 +162,7 @@ public class MainController implements Initializable {
         stage.setMaximized(true);
         stage.setFullScreen(true);
         GameController gameController = fxmlLoader.getController();
+        gameController.setPlayerCat(cur_image);
         scene.setOnKeyPressed(gameController.getPlayerControlEvent());
         stage.show();
     }
