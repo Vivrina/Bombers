@@ -40,6 +40,9 @@ public class MainController implements Initializable {
     public Button mainButton;
 
     @FXML
+    public Button  enter_lobby;
+
+    @FXML
     private Button rightButton;
 
     @FXML
@@ -56,6 +59,9 @@ public class MainController implements Initializable {
 
     @FXML
     private HBox MapH;
+
+    @FXML
+    private VBox lobby;
 
     @FXML
     private ImageView bg;
@@ -85,6 +91,7 @@ public class MainController implements Initializable {
     public void pressStartButton(ActionEvent event) throws Exception {
         bg.setImage(new Image(new FileInputStream("src/main/resources/img/bg2.png")));
         mainButton.setVisible(false);
+        enter_lobby.setVisible(false);
         CatV.setVisible(true);
     }
 
@@ -177,6 +184,8 @@ public class MainController implements Initializable {
         MapV.setVisible(false);
         MapV.setSpacing(50);
         MapH.setSpacing(200);
+        lobby.setVisible(true);
+        lobby.setSpacing(10);
 
         try {
             cur_image = "src/main/resources/img/cat/fat1.png";
