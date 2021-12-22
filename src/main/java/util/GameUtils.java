@@ -77,12 +77,12 @@ public class GameUtils {
             spawnEnemy = new Cell(gameMap.getMap().getSpawnOne().getColumn(), gameMap.getMap().getSpawnOne().getRow());
             spawnPlayer = new Cell(gameMap.getMap().getSpawnTwo().getColumn(), gameMap.getMap().getSpawnTwo().getRow());
         }
-        this.player.setImage(new Image(new FileInputStream("src/main/resources/img/cat/fat1.png")));
+        this.player.setImage(new Image(new FileInputStream(player)));
         this.player.setFitHeight(90.00);
         this.player.setFitWidth(90.00);
         gameTable.add(this.player, spawnPlayer.getColumn(), spawnPlayer.getRow());
 
-        this.enemy.setImage(new Image(new FileInputStream("src/main/resources/img/cat/fat1.png")));
+        this.enemy.setImage(new Image(new FileInputStream(enemy)));
         this.enemy.setFitHeight(90.00);
         this.enemy.setFitWidth(90.00);
         gameTable.add(this.enemy, spawnEnemy.getColumn(), spawnEnemy.getRow());
@@ -90,6 +90,8 @@ public class GameUtils {
             e.printStackTrace();
         }
         gameHbox.setVisible(true);
+        gameHbox.requestFocus();
+        gameTable.requestFocus();
     }
 
     public void setEnemy(ImageView enemy) {

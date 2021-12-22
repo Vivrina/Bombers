@@ -127,6 +127,7 @@ public class GameController implements Initializable {
         }
         game.setVisible(false);
         waitingBlock.setVisible(true);
+        messageControl1.setVisible(false);
         gameZone.requestFocus();
     }
 
