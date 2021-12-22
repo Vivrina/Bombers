@@ -404,6 +404,11 @@ public class GameController implements Initializable {
         message.setBody(Action.WIN.getTitle());
         clientSocket.sendMessage(message);
 
+        Message mess = new Message();
+        mess.setType(MessageType.LOBBY);
+        message.addHeader("end", lobbyCode);
+        clientSocket.sendMessage(mess);
+
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/End.fxml"));
         Stage stage=(Stage) gameZone.getScene().getWindow();
         Parent root = null;

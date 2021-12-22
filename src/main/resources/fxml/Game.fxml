@@ -48,7 +48,7 @@
         <ImageView fx:id="bg0"   fitWidth="1920" fitHeight="1080"/>
         <HBox>
             <padding>
-                <Insets top="450" left="800" />
+                <Insets top="450" left="850" />
             </padding>
             <ImageView fx:id="loadingImage"   fitWidth="200.0" fitHeight="200.0"/>
         </HBox>
