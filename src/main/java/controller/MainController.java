@@ -1,7 +1,6 @@
 package controller;
 
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -9,10 +8,9 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.KeyEvent;
-import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
@@ -23,21 +21,23 @@ import sockets.ClientSocket;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.ResourceBundle;
 
 public class MainController implements Initializable {
-    private static String cur_image;
-    private static String cur_map;
-    private static String brown;
-    private static String green;
+    private String cur_image;
+    private String cur_map;
+    private String username;
+    private String lobbyCode;
 
     private ClientSocket clientSocket;
 
     @FXML
     public Button mainButton;
+
+    @FXML
+    public Button  enter_lobby;
 
     @FXML
     private Button rightButton;
@@ -58,6 +58,9 @@ public class MainController implements Initializable {
     private HBox MapH;
 
     @FXML
+    private VBox lobby;
+
+    @FXML
     private ImageView bg;
 
     @FXML
@@ -68,6 +71,15 @@ public class MainController implements Initializable {
 
     @FXML
     public StackPane menu;
+
+    @FXML
+    private VBox info;
+
+    @FXML
+    private TextField nameField;
+
+    @FXML
+    private TextField codeField;
 
 
 
@@ -85,9 +97,20 @@ public class MainController implements Initializable {
     public void pressStartButton(ActionEvent event) throws Exception {
         bg.setImage(new Image(new FileInputStream("src/main/resources/img/bg2.png")));
         mainButton.setVisible(false);
-        CatV.setVisible(true);
+        enter_lobby.setVisible(false);
+        info.setVisible(true);
     }
 
+    @FXML
+    public void pressSetCodeAndUsername(ActionEvent event) throws Exception {
+        bg.setImage(new Image(new FileInputStream("src/main/resources/img/bg2.png")));
+        lobbyCode = codeField.getText();
+        username = nameField.getText();
+        System.out.println(lobbyCode);
+        System.out.println(username);
+        info.setVisible(false);
+        CatV.setVisible(true);
+    }
 
 
     @FXML
@@ -125,7 +148,7 @@ public class MainController implements Initializable {
     }
 
     @FXML
-        public void rightMap(ActionEvent event) throws Exception {
+    public void rightMap(ActionEvent event) throws Exception {
         int index = maps.indexOf(cur_map);
         if(index<maps.size()-1){
             index++;
@@ -152,17 +175,24 @@ public class MainController implements Initializable {
 
     @FXML
     public void pressTwoReadyButton (ActionEvent event) throws Exception{
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/MapOne.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/Game.fxml"));
         Node node=(Node) event.getSource();
         Stage stage=(Stage) node.getScene().getWindow();
         Parent root = fxmlLoader.load();
 
         Scene scene = new Scene(root);
         stage.setScene(scene);
-        stage.setMaximized(true);
-        stage.setFullScreen(true);
+//        stage.setMaximized(true);
+//        stage.setFullScreen(true);
         GameController gameController = fxmlLoader.getController();
+        System.out.println(username + " " + lobbyCode + " " + cur_image + " " + cur_map);
+        gameController.setPlayerUsername(username);
+        gameController.setPlayerUsername(lobbyCode);
         gameController.setPlayerCat(cur_image);
+        gameController.setPickedMap(cur_map);
+        gameController.setLobbyCode(lobbyCode);
+        gameController.doConnect();
+        gameController.doLobbyConnect();
         scene.setOnKeyPressed(gameController.getPlayerControlEvent());
         stage.show();
     }
@@ -177,7 +207,9 @@ public class MainController implements Initializable {
         MapV.setVisible(false);
         MapV.setSpacing(50);
         MapH.setSpacing(200);
-
+        lobby.setVisible(true);
+        lobby.setSpacing(10);
+        info.setVisible(false);
         try {
             cur_image = "src/main/resources/img/cat/fat1.png";
             cur_map = "src/main/resources/img/maps/map1.png";
@@ -191,6 +223,5 @@ public class MainController implements Initializable {
             e.printStackTrace();
         }
     }
-
 
 }

@@ -4,7 +4,7 @@ public enum MessageType {
     CONNECT("connect", "Подключение к серверу"),
     ACTION("action", "Действие игрока"),
     CHAT("chat", "Сообщение другим пользователям"),
-    SETUP("setup", "Настройки");
+    LOBBY("lobby", "Действие, связанное с лобби");
 
     private final String title;
     private final String description;

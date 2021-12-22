@@ -1,5 +1,6 @@
 package sockets;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.sun.scenario.effect.impl.prism.PrImage;
@@ -50,12 +51,6 @@ public class ClientSocket extends Thread {
         }
     }
 
-    public void sendSetup(String cat) {
-        Message message = new Message();
-        message.setType(MessageType.SETUP);
-        message.addHeader("cat", cat);
-        sendMessage(message);
-    }
 
 
 
@@ -83,11 +78,11 @@ public class ClientSocket extends Thread {
                 System.out.println(e.getMessage());
             }
             switch (message.getType()) {
-                case SETUP: {
-                    String cat = message.getBody();
-                    Platform.runLater(() -> gameController.setEnemyCat(cat));
-                    break;
-                }
+//                case LOBBY: {
+//                    String code = message.getBody();
+//                    Platform.runLater(() -> gameController.setEnemyCat(cat));
+//                    break;
+//                }
                 case CHAT: {
                     Label label = new Label();
                     label.setText(message.getBody());

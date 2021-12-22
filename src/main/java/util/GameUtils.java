@@ -12,6 +12,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.util.Duration;
 import models.Cell;
+import models.GameMap;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -21,8 +22,8 @@ import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class GameUtils {
-    private ArrayList<Cell> edges;
     private ArrayList<Cell> bombs;
+    private GameMap gameMap;
     private ImageView player;
     private ImageView enemy;
     private GridPane gameTable;
@@ -34,12 +35,57 @@ public class GameUtils {
                     "src/main/resources/img/bombs/bomba7.png", "src/main/resources/img/bombs/bomba8.png",
                     "src/main/resources/img/bombs/bomba9.png", "src/main/resources/img/bombs/bomba10.png");
 
-    public GameUtils(ArrayList<Cell> edges, ImageView player, ImageView enemy, GridPane gameTable) {
-        this.edges = edges;
+    public GameUtils(GameMap gameMap, ImageView player, ImageView enemy, GridPane gameTable) {
+        this.gameMap = gameMap;
         this.player = player;
         this.enemy = enemy;
         this.gameTable = gameTable;
         this.bombs = new ArrayList<>();
+        create();
+    }
+
+    void create(){
+        try {
+        List<Cell> edges = new ArrayList<>();
+        for(int i = 0; i < 12; i++){
+            for(int j = 0; j < 12; j++) {
+                Cell cell = new Cell(i, j);
+                ImageView bg = new ImageView();
+                bg.setImage(new Image((new FileInputStream(gameMap.getBgSkin()))));
+                bg.setFitHeight(90.00);
+                bg.setFitWidth(90.00);
+                gameTable.add(bg, cell.getColumn(), cell.getRow());
+                if((i==0 || j==0) || (i==11 || j==11)) {
+                    ImageView border = new ImageView();
+                    border.setImage(new Image((new FileInputStream(gameMap.getBorderSkin()))));
+                    border.setFitHeight(90.00);
+                    border.setFitWidth(90.00);
+                    gameTable.add(border, cell.getColumn(), cell.getRow());
+                    edges.add(cell);
+                }
+                if(gameMap.getBlockIndexes().contains(cell)){
+                    ImageView border = new ImageView();
+                    border.setImage(new Image((new FileInputStream(gameMap.getBorderSkin()))));
+                    border.setFitHeight(90.00);
+                    border.setFitWidth(90.00);
+                    gameTable.add(border, cell.getColumn(), cell.getRow());
+                }
+            }
+        }
+        gameMap.addEdges(edges);
+
+        player.setImage(new Image(new FileInputStream("src/main/resources/img/cat/fat1.png")));
+        player.setFitHeight(90.00);
+        player.setFitWidth(90.00);
+        gameTable.add(player, gameMap.getSpawnOne().getColumn(), gameMap.getSpawnOne().getRow());
+
+        enemy.setImage(new Image(new FileInputStream("src/main/resources/img/cat/fat1.png")));
+        enemy.setFitHeight(90.00);
+        enemy.setFitWidth(90.00);
+        gameTable.add(enemy, gameMap.getSpawnTwo().getColumn(), gameMap.getSpawnTwo().getRow());
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 
     public void setEnemy(ImageView enemy) {
@@ -51,28 +97,28 @@ public class GameUtils {
     }
 
     public ImageView goLeft(ImageView gamer) {
-        if(!edges.contains(new Cell((GridPane.getColumnIndex(gamer) - 1), GridPane.getRowIndex(gamer)))) {
+        if(!gameMap.getBlockIndexes().contains(new Cell((GridPane.getColumnIndex(gamer) - 1), GridPane.getRowIndex(gamer)))) {
             GridPane.setColumnIndex(gamer, GridPane.getColumnIndex(gamer) - 1);
         }
         return gamer;
     }
 
     public ImageView goRight(ImageView gamer) {
-        if(!edges.contains(new Cell((GridPane.getColumnIndex(gamer) + 1), GridPane.getRowIndex(gamer)))) {
+        if(!gameMap.getBlockIndexes().contains(new Cell((GridPane.getColumnIndex(gamer) + 1), GridPane.getRowIndex(gamer)))) {
             GridPane.setColumnIndex(gamer, GridPane.getColumnIndex(gamer) + 1);
         }
         return gamer;
     }
 
     public ImageView goUp(ImageView gamer) {
-        if(!edges.contains(new Cell(GridPane.getColumnIndex(gamer), (GridPane.getRowIndex(gamer)-1)))) {
+        if(!gameMap.getBlockIndexes().contains(new Cell(GridPane.getColumnIndex(gamer), (GridPane.getRowIndex(gamer)-1)))) {
             GridPane.setRowIndex(gamer, GridPane.getRowIndex(gamer) - 1);
         }
         return gamer;
     }
 
     public ImageView goDown(ImageView gamer) {
-        if(!edges.contains(new Cell(GridPane.getColumnIndex(gamer), (GridPane.getRowIndex(gamer)+1)))) {
+        if(!gameMap.getBlockIndexes().contains(new Cell(GridPane.getColumnIndex(gamer), (GridPane.getRowIndex(gamer)+1)))) {
             GridPane.setRowIndex(gamer, GridPane.getRowIndex(gamer) + 1);
         }
         return gamer;

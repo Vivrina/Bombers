@@ -1,5 +1,5 @@
 #mainButton {
-    -fx-background-image: url("/img/but0.png");
+    -fx-background-image: url("/img/create_lobby.png");
 }
 
 #rightButton {
@@ -27,5 +27,13 @@
 }
 
 #readyButton {
+    -fx-background-image: url("/img/done.png");
+}
+
+#enter_lobby{
+    -fx-background-image: url("/img/enter_lobby.png");
+}
+
+#lobbyButton {
     -fx-background-image: url("/img/done.png");
 }

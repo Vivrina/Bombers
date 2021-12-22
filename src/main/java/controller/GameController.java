@@ -13,10 +13,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.*;
 import javafx.util.Duration;
 import models.Cell;
 import protocol.Message;
@@ -24,6 +21,7 @@ import protocol.MessageType;
 import sockets.ClientSocket;
 import util.GameUtils;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.net.URL;
@@ -33,19 +31,6 @@ import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class GameController implements Initializable {
-    private static String brown = "src/main/resources/img/play/brown.png";
-    private static String grey = "src/main/resources/img/play/grey.png";
-    private static String empty = "src/main/resources/img/play/empty.png";
-
-
-    private static List<Cell> greyBlocks =
-            Arrays.asList(new Cell(2,2), new Cell(2,4), new Cell(2,5), new Cell(2,8), new Cell(2,9),
-                    new Cell(1,8), new Cell(4,2), new Cell(4,7), new Cell(4,8), new Cell(4,6),
-                    new Cell(4,10), new Cell(5,8), new Cell(7,9), new Cell(6,4), new Cell(7,1),
-                    new Cell(7,4), new Cell(7,5), new Cell(7,6), new Cell(9,2), new Cell(9,3),
-                    new Cell(9,6), new Cell(9,7), new Cell(9,9), new Cell(10,3));
-
-
     private ClientSocket clientSocket;
 
     private GameUtils gameUtils;
@@ -53,15 +38,35 @@ public class GameController implements Initializable {
     private String playerCat;
     private String enemyCat;
 
+    private String playerUsername;
+    private String enemyUsername;
 
+    private String pickedMap;
 
+    private String lobbyCode;
+
+    public String getLobbyCode() {
+        return lobbyCode;
+    }
+
+    public void setLobbyCode(String lobbyCode) {
+        this.lobbyCode = lobbyCode;
+    }
+
+    public void setPlayerUsername(String playerUsername) {
+        this.playerUsername = playerUsername;
+    }
+
+    public void setEnemyUsername(String enemyUsername) {
+        this.enemyUsername = enemyUsername;
+    }
+
+    public void setPickedMap(String pickedMap) {
+        this.pickedMap = pickedMap;
+    }
 
     public void setPlayerCat(String playerCat) {
-        try {
-            getPlayer().setImage(new Image(new FileInputStream(playerCat)));
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
+        this.playerCat = playerCat;
     }
 
     public String getEnemyCat() {
@@ -73,7 +78,7 @@ public class GameController implements Initializable {
     }
 
     @FXML
-    public AnchorPane gameZone;
+    public BorderPane gameZone;
 
     @FXML
     public HBox game;
@@ -116,58 +121,36 @@ public class GameController implements Initializable {
     @FXML
     private Button sendMessageButton1;
 
+    @FXML
+    public StackPane waitingBlock;
+
+    @FXML
+    public ImageView loadingImage;
+
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         try {
-            gameZone.requestFocus();
-            ArrayList<Cell> edges = new ArrayList<>();
-
-            for(int i = 0; i < 12; i++){
-                for(int j = 0; j < 12; j++) {
-                    ImageView emptyBlock = new ImageView();
-                    emptyBlock.setImage(new Image((new FileInputStream(empty))));
-                    emptyBlock.setFitHeight(90.00);
-                    emptyBlock.setFitWidth(90.00);
-                    gameTable.add(emptyBlock, i, j);
-                    if((i==0 || j==0) || (i==11 || j==11)) {
-                        ImageView greyBlock = new ImageView();
-                        greyBlock.setImage(new Image((new FileInputStream(grey))));
-                        greyBlock.setFitHeight(90.00);
-                        greyBlock.setFitWidth(90.00);
-                        gameTable.add(greyBlock, i, j);
-                        edges.add(new Cell(i, j));
-                    }
-                }
-            }
-
-            for(Cell cell : greyBlocks){
-                ImageView greyBlock = new ImageView();
-                greyBlock.setImage(new Image((new FileInputStream(grey))));
-                greyBlock.setFitHeight(90.00);
-                greyBlock.setFitWidth(90.00);
-                gameTable.add(greyBlock, cell.getColumn(), cell.getRow());
-                edges.add(cell);
-            }
-
-
-            player.setImage(new Image(new FileInputStream("src/main/resources/img/cat/fat1.png")));
-            player.setFitHeight(90.00);
-            player.setFitWidth(90.00);
-            gameTable.add(player, 10, 1);
-
-            enemy.setImage(new Image(new FileInputStream("src/main/resources/img/cat/fat1.png")));
-            enemy.setFitHeight(90.00);
-            enemy.setFitWidth(90.00);
-            gameTable.add(enemy, 1, 10);
-
-            gameUtils = new GameUtils(edges, player, enemy, gameTable);
-
+            loadingImage.setImage(new Image(new FileInputStream("src/main/resources/img/gif/loading.gif")));
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
+        game.setVisible(false);
+        waitingBlock.setVisible(true);
+        gameZone.requestFocus();
+
+    }
+
+    public void doConnect(){
         clientSocket = new ClientSocket();
-        clientSocket.connect(this, "nickname");
+        clientSocket.connect(this, playerUsername);
+    }
+
+    public void doLobbyConnect(){
+        Message message = new Message();
+        message.setType(MessageType.LOBBY);
+        message.addHeader("code", lobbyCode);
+        clientSocket.sendMessage(message);
     }
 
     private final EventHandler<KeyEvent> playerControlEvent = event -> {
@@ -232,9 +215,6 @@ public class GameController implements Initializable {
     };
 
 
-    private void sendSetup(String cat) {
-        clientSocket.sendSetup(cat);
-    }
 
 
     @FXML
