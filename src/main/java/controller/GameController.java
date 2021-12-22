@@ -151,15 +151,28 @@ public class GameController implements Initializable {
         System.out.println(mapName);
         GameMap gameMap = new GameMap(mapName);
         waitingBlock.setVisible(false);
-        this.gameUtils = new GameUtils(gameMap, game, playerCat, enemyCat, gameTable, role);
+
+        try {
+            player.setFitHeight(90.00);
+            player.setFitWidth(90.00);
+            player.setImage(new Image(new FileInputStream(playerCat)));
+
+            enemy.setFitHeight(90.00);
+            enemy.setFitWidth(90.00);
+            enemy.setImage(new Image(new FileInputStream(enemyCat)));
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+
+
+        this.gameUtils = new GameUtils(gameMap, game, player, enemy, gameTable, role);
     }
 
     private final EventHandler<KeyEvent> playerControlEvent = event -> {
         System.out.println(event.getCode());
         switch (event.getCode()) {
             case W: {
-                ImageView gamer = gameUtils.goUp(player);
-                gameUtils.setPlayer(gamer);
+                gameUtils.goUp(player);
 
                 Message message = new Message();
                 message.setType(MessageType.ACTION);
@@ -169,8 +182,7 @@ public class GameController implements Initializable {
                 break;
             }
             case A: {
-                ImageView gamer = gameUtils.goLeft(player);
-                gameUtils.setPlayer(gamer);
+                gameUtils.goLeft(player);
 
                 Message message = new Message();
                 message.setType(MessageType.ACTION);
@@ -180,8 +192,7 @@ public class GameController implements Initializable {
                 break;
             }
             case S: {
-                ImageView gamer = gameUtils.goDown(player);
-                gameUtils.setPlayer(gamer);
+                gameUtils.goDown(player);
 
                 Message message = new Message();
                 message.setType(MessageType.ACTION);
@@ -191,8 +202,7 @@ public class GameController implements Initializable {
                 break;
             }
             case D: {
-                ImageView gamer = gameUtils.goRight(player);
-                gameUtils.setPlayer(gamer);
+                gameUtils.goRight(player);
 
                 Message message = new Message();
                 message.setType(MessageType.ACTION);
@@ -201,16 +211,16 @@ public class GameController implements Initializable {
 
                 break;
             }
-            case ENTER: {
-                gameUtils.bomb(player);
-
-                Message message = new Message();
-                message.setType(MessageType.ACTION);
-                message.setBody(Action.BOMB.getTitle());
-                clientSocket.sendMessage(message);
-
-                break;
-            }
+//            case ENTER: {
+//                gameUtils.bomb(player);
+//
+//                Message message = new Message();
+//                message.setType(MessageType.ACTION);
+//                message.setBody(Action.BOMB.getTitle());
+//                clientSocket.sendMessage(message);
+//
+//                break;
+//            }
 
         }
     };
