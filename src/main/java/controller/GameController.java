@@ -355,11 +355,21 @@ public class GameController implements Initializable {
             if (i.get() == 8) {
                 if (checkDead(GridPane.getColumnIndex(player), GridPane.getRowIndex(player),
                         GridPane.getColumnIndex(bomb), GridPane.getRowIndex(bomb))) {
+                    try {
+                        bomb.setImage(new Image(new FileInputStream(bombImages.get(9))));
+                    } catch (FileNotFoundException e) {
+                        e.printStackTrace();
+                    }
                     lose();
                 }
                 if (checkDead(GridPane.getColumnIndex(enemy), GridPane.getRowIndex(enemy),
                         GridPane.getColumnIndex(bomb), GridPane.getRowIndex(bomb))) {
                     gameTable.getChildren().remove(enemy);
+                    try {
+                        bomb.setImage(new Image(new FileInputStream(bombImages.get(9))));
+                    } catch (FileNotFoundException e) {
+                        e.printStackTrace();
+                    }
                     win();
                 }
             }
