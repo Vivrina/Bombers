@@ -7,14 +7,12 @@
 <?import javafx.scene.layout.*?>
 
 <?import javafx.scene.image.ImageView?>
-<BorderPane xmlns="http://javafx.com/javafx"
+<AnchorPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="controller.EndController"
             prefHeight="1920.0" prefWidth="1080.0">
-    <center>
-        <ImageView  fx:id="resultBG"/>
-        <Button fx:id="toTheMenu"  stylesheets="/css/button.css" prefHeight="150.0" prefWidth="150.0" onAction="#toTheMenu" />
-    </center>
+
+        <ImageView  fx:id="resultBG" fitWidth="1920" fitHeight="1080"/>
 
 
-</BorderPane>
+</AnchorPane>
