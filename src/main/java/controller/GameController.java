@@ -352,7 +352,7 @@ public class GameController implements Initializable {
                 e.printStackTrace();
             }
 
-            if (i.get() == 7) {
+            if (i.get() == 8) {
                 if (checkDead(GridPane.getColumnIndex(player), GridPane.getRowIndex(player),
                         GridPane.getColumnIndex(bomb), GridPane.getRowIndex(bomb))) {
                     lose();
@@ -373,11 +373,11 @@ public class GameController implements Initializable {
     }
 
     public void win(){
-        gameTable.getChildren().remove(enemy);
+
 
         gameZone.getScene().removeEventFilter(KeyEvent.KEY_PRESSED,getPlayerControlEvent());
         try {
-            TimeUnit.SECONDS.sleep(3);
+            TimeUnit.SECONDS.sleep(1);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -411,7 +411,7 @@ public class GameController implements Initializable {
 
         gameZone.getScene().removeEventFilter(KeyEvent.KEY_PRESSED,getPlayerControlEvent());
         try {
-            TimeUnit.SECONDS.sleep(3);
+            TimeUnit.SECONDS.sleep(1);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
