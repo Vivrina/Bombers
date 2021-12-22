@@ -151,7 +151,7 @@ public class GameController implements Initializable {
         System.out.println(mapName);
         GameMap gameMap = new GameMap(mapName);
         waitingBlock.setVisible(false);
-        GameUtils gameUtils = new GameUtils(gameMap, game, playerCat, enemyCat, gameTable, role);
+        this.gameUtils = new GameUtils(gameMap, game, playerCat, enemyCat, gameTable, role);
     }
 
     private final EventHandler<KeyEvent> playerControlEvent = event -> {
