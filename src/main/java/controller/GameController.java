@@ -149,7 +149,8 @@ public class GameController implements Initializable {
         MapPool mapName = Enum.valueOf(MapPool.class , map);
         System.out.println(mapName);
         GameMap gameMap = new GameMap(mapName);
-        GameUtils gameUtils = new GameUtils(gameMap, playerCat, enemyCat, gameTable, role);
+        waitingBlock.setVisible(false);
+        GameUtils gameUtils = new GameUtils(gameMap, game, playerCat, enemyCat, gameTable, role);
     }
 
     private final EventHandler<KeyEvent> playerControlEvent = event -> {

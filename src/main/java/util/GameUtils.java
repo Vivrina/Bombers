@@ -8,6 +8,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.util.Duration;
@@ -22,6 +23,7 @@ import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class GameUtils {
+    private HBox gameHbox;
     private ArrayList<Cell> bombs;
     private GameMap gameMap;
     private ImageView player;
@@ -35,10 +37,13 @@ public class GameUtils {
                     "src/main/resources/img/bombs/bomba7.png", "src/main/resources/img/bombs/bomba8.png",
                     "src/main/resources/img/bombs/bomba9.png", "src/main/resources/img/bombs/bomba10.png");
 
-    public GameUtils(GameMap gameMap, String player, String enemy, GridPane gameTable, String role) {
+    public GameUtils(GameMap gameMap, HBox gameHbox, String player, String enemy, GridPane gameTable, String role) {
+        this.gameHbox = gameHbox;
         this.gameMap = gameMap;
         this.gameTable = gameTable;
         this.bombs = new ArrayList<>();
+        this.player = new ImageView();
+        this.enemy = new ImageView();
         create(player, enemy, role);
     }
 
@@ -84,6 +89,7 @@ public class GameUtils {
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
+        gameHbox.setVisible(true);
     }
 
     public void setEnemy(ImageView enemy) {
