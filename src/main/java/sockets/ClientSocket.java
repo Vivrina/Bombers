@@ -101,30 +101,30 @@ public class ClientSocket extends Thread {
                         case("right"): {
                             ImageView enemy = gameController.getEnemy();
                             Platform.runLater(() -> utils.goRight(enemy));
-                            Platform.runLater(() -> utils.setEnemy(enemy));
+//                            Platform.runLater(() -> utils.setEnemy(enemy));
                             break;
                         }
                         case("left"): {
                             ImageView enemy = gameController.getEnemy();
                             Platform.runLater(() -> utils.goLeft(enemy));
-                            Platform.runLater(() -> utils.setEnemy(enemy));;
+//                            Platform.runLater(() -> utils.setEnemy(enemy));;
                             break;
                         }
                         case("up"): {
                             ImageView enemy = gameController.getEnemy();
                             Platform.runLater(() -> utils.goUp(enemy));
-                            Platform.runLater(() -> utils.setEnemy(enemy));
+//                            Platform.runLater(() -> utils.setEnemy(enemy));
                             break;
                         }
                         case("down"): {
                             ImageView enemy = gameController.getEnemy();
                             Platform.runLater(() -> utils.goDown(enemy));
-                            Platform.runLater(() -> utils.setEnemy(enemy));
+//                            Platform.runLater(() -> utils.setEnemy(enemy));
                             break;
                         }
                         case("bomb"): {
                             ImageView enemy = gameController.getEnemy();
-                            Platform.runLater(() -> utils.bomb(enemy));
+//                            Platform.runLater(() -> utils.bomb(enemy));
                             break;
                         }
                     }
