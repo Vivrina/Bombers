@@ -14,7 +14,19 @@ public enum MapPool {
                     new Cell(1,8), new Cell(4,2), new Cell(4,7), new Cell(4,8), new Cell(4,6),
                     new Cell(4,10), new Cell(5,8), new Cell(7,9), new Cell(6,4), new Cell(7,1),
                     new Cell(7,4), new Cell(7,5), new Cell(7,6), new Cell(9,2), new Cell(9,3),
-                    new Cell(9,6), new Cell(9,7), new Cell(9,9), new Cell(10,3))),
+                    new Cell(9,6), new Cell(9,7), new Cell(9,9), new Cell(10,3),
+                    new Cell(0,0), new Cell(0,1), new Cell(0,2),
+                    new Cell(0,3), new Cell(0,4), new Cell(0,5), new Cell(0,6),
+                    new Cell(0,7), new Cell(0,8), new Cell(0,9), new Cell(0,10),
+                    new Cell(0,11), new Cell(1,0), new Cell(2,0), new Cell(3,0),
+                    new Cell(4,0), new Cell(5,0), new Cell(6,0), new Cell(7,0),
+                    new Cell(8,0), new Cell(9,0), new Cell(10,0), new Cell(11,0),
+                    new Cell(11,1), new Cell(11,2), new Cell(11,3), new Cell(11,4),
+                    new Cell(11,5), new Cell(11,6), new Cell(11,7), new Cell(11,8),
+                    new Cell(11,9), new Cell(11,10), new Cell(11,11), new Cell(1,11),
+                    new Cell(2,11), new Cell(3,11), new Cell(4,11), new Cell(5,11),
+                    new Cell(6,11), new Cell(7,11), new Cell(8,11), new Cell(9,11),
+                    new Cell(10,11))),
 
     SAND("src/main/resources/img/blocks/sand.png", "src/main/resources/img/blocks/brown.png",
             new Cell(9, 10), new Cell(2, 1),
@@ -23,7 +35,19 @@ public enum MapPool {
                     new Cell(9,4), new Cell(4,5), new Cell(7,5), new Cell(9,5), new Cell(2,6),
                     new Cell(4,6), new Cell(7,6), new Cell(2,7), new Cell(4,7), new Cell(7,7),
                     new Cell(1,8), new Cell(2,8), new Cell(4,8), new Cell(6,8), new Cell(7,8),
-                    new Cell(9,9), new Cell(3,10), new Cell(8,10))),
+                    new Cell(9,9), new Cell(3,10), new Cell(8,10),
+                    new Cell(0,0), new Cell(0,1), new Cell(0,2),
+                    new Cell(0,3), new Cell(0,4), new Cell(0,5), new Cell(0,6),
+                    new Cell(0,7), new Cell(0,8), new Cell(0,9), new Cell(0,10),
+                    new Cell(0,11), new Cell(1,0), new Cell(2,0), new Cell(3,0),
+                    new Cell(4,0), new Cell(5,0), new Cell(6,0), new Cell(7,0),
+                    new Cell(8,0), new Cell(9,0), new Cell(10,0), new Cell(11,0),
+                    new Cell(11,1), new Cell(11,2), new Cell(11,3), new Cell(11,4),
+                    new Cell(11,5), new Cell(11,6), new Cell(11,7), new Cell(11,8),
+                    new Cell(11,9), new Cell(11,10), new Cell(11,11), new Cell(1,11),
+                    new Cell(2,11), new Cell(3,11), new Cell(4,11), new Cell(5,11),
+                    new Cell(6,11), new Cell(7,11), new Cell(8,11), new Cell(9,11),
+                    new Cell(10,11))),
 
     NEON("src/main/resources/img/blocks/blue.png", "src/main/resources/img/blocks/pink.png",
             new Cell(9, 1), new Cell(2, 10),
@@ -32,7 +56,19 @@ public enum MapPool {
                     new Cell(7,4), new Cell(1,5), new Cell(4,5), new Cell(10,5), new Cell(1,6),
                     new Cell(7,6), new Cell(10,6), new Cell(4,7), new Cell(5,7), new Cell(7,7),
                     new Cell(3,8), new Cell(8,8), new Cell(2,9), new Cell(4,9), new Cell(6,9),
-                    new Cell(9,9), new Cell(1,10), new Cell(7,10))),
+                    new Cell(9,9), new Cell(1,10), new Cell(7,10),
+                    new Cell(0,0), new Cell(0,1), new Cell(0,2),
+                    new Cell(0,3), new Cell(0,4), new Cell(0,5), new Cell(0,6),
+                    new Cell(0,7), new Cell(0,8), new Cell(0,9), new Cell(0,10),
+                    new Cell(0,11), new Cell(1,0), new Cell(2,0), new Cell(3,0),
+                    new Cell(4,0), new Cell(5,0), new Cell(6,0), new Cell(7,0),
+                    new Cell(8,0), new Cell(9,0), new Cell(10,0), new Cell(11,0),
+                    new Cell(11,1), new Cell(11,2), new Cell(11,3), new Cell(11,4),
+                    new Cell(11,5), new Cell(11,6), new Cell(11,7), new Cell(11,8),
+                    new Cell(11,9), new Cell(11,10), new Cell(11,11), new Cell(1,11),
+                    new Cell(2,11), new Cell(3,11), new Cell(4,11), new Cell(5,11),
+                    new Cell(6,11), new Cell(7,11), new Cell(8,11), new Cell(9,11),
+                    new Cell(10,11))),
 
     JUNGLE("src/main/resources/img/blocks/grass.png", "src/main/resources/img/blocks/green.png",
             new Cell(10, 6), new Cell(1, 4),
@@ -43,7 +79,19 @@ public enum MapPool {
                     new Cell(9,5), new Cell(4,6), new Cell(6,6), new Cell(7,6), new Cell(9,6),
                     new Cell(2,7), new Cell(6,7), new Cell(9,7), new Cell(10,7), new Cell(2,8),
                     new Cell(3,8), new Cell(4,8), new Cell(6,8), new Cell(2,9), new Cell(6,9),
-                    new Cell(7,9), new Cell(9,9), new Cell(9,10)));
+                    new Cell(7,9), new Cell(9,9), new Cell(9,10),
+                    new Cell(0,0), new Cell(0,1), new Cell(0,2),
+                    new Cell(0,3), new Cell(0,4), new Cell(0,5), new Cell(0,6),
+                    new Cell(0,7), new Cell(0,8), new Cell(0,9), new Cell(0,10),
+                    new Cell(0,11), new Cell(1,0), new Cell(2,0), new Cell(3,0),
+                    new Cell(4,0), new Cell(5,0), new Cell(6,0), new Cell(7,0),
+                    new Cell(8,0), new Cell(9,0), new Cell(10,0), new Cell(11,0),
+                    new Cell(11,1), new Cell(11,2), new Cell(11,3), new Cell(11,4),
+                    new Cell(11,5), new Cell(11,6), new Cell(11,7), new Cell(11,8),
+                    new Cell(11,9), new Cell(11,10), new Cell(11,11), new Cell(1,11),
+                    new Cell(2,11), new Cell(3,11), new Cell(4,11), new Cell(5,11),
+                    new Cell(6,11), new Cell(7,11), new Cell(8,11), new Cell(9,11),
+                    new Cell(10,11)));
 
     private final String bgSkin;
     private final String borderSkin;
@@ -57,18 +105,6 @@ public enum MapPool {
         this.spawnOne = spawnOne;
         this.spawnTwo = spawnTwo;
         this.blockIndexes = blockIndexes;
-        addBorders();
-    }
-
-    public void addBorders(){
-        for(int i = 0; i < 12; i++) {
-            for (int j = 0; j < 12; j++) {
-                if ((i == 0 || j == 0) || (i == 11 || j == 11)) {
-                    Cell cell = new Cell(i, j);
-                    blockIndexes.add(cell);
-                }
-            }
-        }
     }
 
     public String getBgSkin() {

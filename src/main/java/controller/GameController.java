@@ -27,6 +27,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.net.URL;
+import java.sql.SQLOutput;
 import java.util.*;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.atomic.AtomicBoolean;
@@ -145,7 +146,9 @@ public class GameController implements Initializable {
     }
 
     public void startGame(String code, String map, String role, String enemyCat, String enemyUsername){
-        GameMap gameMap = new GameMap(MapPool.valueOf(map));
+        MapPool mapName = Enum.valueOf(MapPool.class , map);
+        System.out.println(mapName);
+        GameMap gameMap = new GameMap(mapName);
         GameUtils gameUtils = new GameUtils(gameMap, playerCat, enemyCat, gameTable, role);
     }
 
