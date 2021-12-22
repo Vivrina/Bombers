@@ -55,10 +55,8 @@ public class ClientSocket extends Thread {
     public void sendMessage(Message message) {
         try {
             String jsonMessage = new ObjectMapper().writeValueAsString(message);
-            System.out.println(jsonMessage);
             out.println(jsonMessage);
         } catch (JsonProcessingException e) {
-            //console log
         }
     }
 
@@ -69,11 +67,8 @@ public class ClientSocket extends Thread {
             Message message = null;
             try {
                 messageFromServer = fromServer.readLine();
-                System.out.println(messageFromServer);
                 message = new ObjectMapper().readValue(messageFromServer, Message.class);
-                System.out.println(message);
             } catch (IOException e) {
-                System.out.println(e.getMessage());
             }
             switch (message.getType()) {
                 case LOBBY: {

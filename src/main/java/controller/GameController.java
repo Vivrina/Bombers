@@ -146,7 +146,7 @@ public class GameController implements Initializable {
         }
         game.setVisible(false);
         waitingBlock.setVisible(true);
-        messageControl1.setVisible(false);
+        messageControl1.setVisible(true);
         gameZone.requestFocus();
     }
 
@@ -243,7 +243,6 @@ public class GameController implements Initializable {
     }
 
     private final EventHandler<KeyEvent> playerControlEvent = event -> {
-        System.out.println(event.getCode());
         switch (event.getCode()) {
             case W: {
                 goUp(player);
