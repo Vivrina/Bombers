@@ -12,7 +12,6 @@ import javafx.scene.text.Font;
 import controller.MainController;
 import protocol.Message;
 import protocol.MessageType;
-import util.GameUtils;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -31,7 +30,6 @@ public class ClientSocket extends Thread {
     private BufferedReader fromServer;
 
     private GameController gameController;
-    private GameUtils utils;
 
     public void connect(GameController gameController, String nickname) {
         try {
@@ -100,31 +98,26 @@ public class ClientSocket extends Thread {
                     switch (message.getBody()) {
                         case("right"): {
                             ImageView enemy = gameController.getEnemy();
-                            Platform.runLater(() -> utils.goRight(enemy));
-//                            Platform.runLater(() -> utils.setEnemy(enemy));
+                            Platform.runLater(() -> gameController.goRight(enemy));
                             break;
                         }
                         case("left"): {
                             ImageView enemy = gameController.getEnemy();
-                            Platform.runLater(() -> utils.goLeft(enemy));
-//                            Platform.runLater(() -> utils.setEnemy(enemy));;
+                            Platform.runLater(() ->gameController.goLeft(enemy));
                             break;
                         }
                         case("up"): {
                             ImageView enemy = gameController.getEnemy();
-                            Platform.runLater(() -> utils.goUp(enemy));
-//                            Platform.runLater(() -> utils.setEnemy(enemy));
+                            Platform.runLater(() -> gameController.goUp(enemy));
                             break;
                         }
                         case("down"): {
                             ImageView enemy = gameController.getEnemy();
-                            Platform.runLater(() -> utils.goDown(enemy));
-//                            Platform.runLater(() -> utils.setEnemy(enemy));
+                            Platform.runLater(() ->gameController.goDown(enemy));
                             break;
                         }
                         case("bomb"): {
                             ImageView enemy = gameController.getEnemy();
-//                            Platform.runLater(() -> utils.bomb(enemy));
                             break;
                         }
                     }
