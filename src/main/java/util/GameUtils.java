@@ -53,15 +53,7 @@ public class GameUtils {
                 bg.setFitHeight(90.00);
                 bg.setFitWidth(90.00);
                 gameTable.add(bg, cell.getColumn(), cell.getRow());
-                if((i==0 || j==0) || (i==11 || j==11)) {
-                    ImageView border = new ImageView();
-                    border.setImage(new Image((new FileInputStream(gameMap.getMap().getBorderSkin()))));
-                    border.setFitHeight(90.00);
-                    border.setFitWidth(90.00);
-                    gameTable.add(border, cell.getColumn(), cell.getRow());
-                    edges.add(cell);
-                }
-                if(gameMap.getMap().getBlockIndexes().contains(cell)){
+                if(gameMap.getEdges().contains(cell)){
                     ImageView border = new ImageView();
                     border.setImage(new Image((new FileInputStream(gameMap.getMap().getBorderSkin()))));
                     border.setFitHeight(90.00);
@@ -70,8 +62,6 @@ public class GameUtils {
                 }
             }
         }
-        gameMap.addEdges(edges);
-
 
         Cell spawnPlayer = null;
         Cell spawnEnemy = null;

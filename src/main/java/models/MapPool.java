@@ -1,5 +1,9 @@
 package models;
 
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+
+import java.io.FileInputStream;
 import java.util.Arrays;
 import java.util.List;
 
@@ -43,7 +47,7 @@ public enum MapPool {
 
     private final String bgSkin;
     private final String borderSkin;
-    private final List<Cell> blockIndexes;
+    private List<Cell> blockIndexes;
     private final Cell spawnOne;
     private final Cell spawnTwo;
 
@@ -53,6 +57,18 @@ public enum MapPool {
         this.spawnOne = spawnOne;
         this.spawnTwo = spawnTwo;
         this.blockIndexes = blockIndexes;
+        addBorders();
+    }
+
+    public void addBorders(){
+        for(int i = 0; i < 12; i++) {
+            for (int j = 0; j < 12; j++) {
+                if ((i == 0 || j == 0) || (i == 11 || j == 11)) {
+                    Cell cell = new Cell(i, j);
+                    blockIndexes.add(cell);
+                }
+            }
+        }
     }
 
     public String getBgSkin() {

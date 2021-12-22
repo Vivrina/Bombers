@@ -30,9 +30,4 @@ public class GameMap {
         this.edges = edges;
     }
 
-    public void addEdges(List<Cell> newEdges){
-        for(Cell cell : newEdges){
-            edges.add(cell);
-        }
-    }
 }
