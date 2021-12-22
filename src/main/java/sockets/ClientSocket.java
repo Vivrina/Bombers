@@ -78,11 +78,17 @@ public class ClientSocket extends Thread {
                 System.out.println(e.getMessage());
             }
             switch (message.getType()) {
-//                case LOBBY: {
-//                    String code = message.getBody();
-//                    Platform.runLater(() -> gameController.setEnemyCat(cat));
-//                    break;
-//                }
+                case LOBBY: {
+                    String code = message.getHeader("code");
+                    String isReady = message.getHeader("isReady");
+                    String role = message.getHeader("role");
+                    String map = message.getHeader("map");
+                    String enemyName = message.getHeader("enemyName");
+                    String enemyCat = message.getHeader("enemyCat");
+
+                    Platform.runLater(() -> gameController.startGame(code, map, role, enemyCat, enemyName));
+                    break;
+                }
                 case CHAT: {
                     Label label = new Label();
                     label.setText(message.getBody());

@@ -21,9 +21,7 @@ import sockets.ClientSocket;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.net.URL;
-import java.util.Arrays;
-import java.util.List;
-import java.util.ResourceBundle;
+import java.util.*;
 
 public class MainController implements Initializable {
     private String cur_image;
@@ -90,6 +88,13 @@ public class MainController implements Initializable {
     private static final List<String> maps =
             Arrays.asList("src/main/resources/img/maps/map1.png", "src/main/resources/img/maps/map2.png"
                     , "src/main/resources/img/maps/map3.png", "src/main/resources/img/maps/map4.png");
+
+    private static final Map<String, String> mapsHashMap = new HashMap<String, String>() {{
+        put("src/main/resources/img/maps/map1.png", "CASTLE");
+        put("src/main/resources/img/maps/map2.png", "SAND");
+        put("src/main/resources/img/maps/map3.png", "NEON");
+        put("src/main/resources/img/maps/map4.png", "JUNGLE");
+    }};
 
 
 
@@ -189,7 +194,7 @@ public class MainController implements Initializable {
         gameController.setPlayerUsername(username);
         gameController.setPlayerUsername(lobbyCode);
         gameController.setPlayerCat(cur_image);
-        gameController.setPickedMap(cur_map);
+        gameController.setPickedMap(mapsHashMap.get(cur_map));
         gameController.setLobbyCode(lobbyCode);
         gameController.doConnect();
         gameController.doLobbyConnect();

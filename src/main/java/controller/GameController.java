@@ -16,6 +16,8 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.*;
 import javafx.util.Duration;
 import models.Cell;
+import models.GameMap;
+import models.MapPool;
 import protocol.Message;
 import protocol.MessageType;
 import sockets.ClientSocket;
@@ -36,10 +38,8 @@ public class GameController implements Initializable {
     private GameUtils gameUtils;
 
     private String playerCat;
-    private String enemyCat;
 
     private String playerUsername;
-    private String enemyUsername;
 
     private String pickedMap;
 
@@ -57,10 +57,6 @@ public class GameController implements Initializable {
         this.playerUsername = playerUsername;
     }
 
-    public void setEnemyUsername(String enemyUsername) {
-        this.enemyUsername = enemyUsername;
-    }
-
     public void setPickedMap(String pickedMap) {
         this.pickedMap = pickedMap;
     }
@@ -69,13 +65,6 @@ public class GameController implements Initializable {
         this.playerCat = playerCat;
     }
 
-    public String getEnemyCat() {
-        return enemyCat;
-    }
-
-    public void setEnemyCat(String enemyCat) {
-        this.enemyCat = enemyCat;
-    }
 
     @FXML
     public BorderPane gameZone;
@@ -138,7 +127,6 @@ public class GameController implements Initializable {
         game.setVisible(false);
         waitingBlock.setVisible(true);
         gameZone.requestFocus();
-
     }
 
     public void doConnect(){
@@ -150,7 +138,15 @@ public class GameController implements Initializable {
         Message message = new Message();
         message.setType(MessageType.LOBBY);
         message.addHeader("code", lobbyCode);
+        message.addHeader("isReady", "false");
+        message.addHeader("cat", playerCat);
+        message.addHeader("map", pickedMap);
         clientSocket.sendMessage(message);
+    }
+
+    public void startGame(String code, String map, String role, String enemyCat, String enemyUsername){
+        GameMap gameMap = new GameMap(MapPool.valueOf(map));
+        GameUtils gameUtils = new GameUtils(gameMap, playerCat, enemyCat, gameTable, role);
     }
 
     private final EventHandler<KeyEvent> playerControlEvent = event -> {
