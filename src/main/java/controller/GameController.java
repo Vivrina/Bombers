@@ -35,6 +35,7 @@ import java.net.URL;
 import java.sql.SQLOutput;
 import java.util.*;
 import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -376,7 +377,7 @@ public class GameController implements Initializable {
 
         gameZone.getScene().removeEventFilter(KeyEvent.KEY_PRESSED,getPlayerControlEvent());
         try {
-            Thread.sleep(200);
+            TimeUnit.SECONDS.sleep(3);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
