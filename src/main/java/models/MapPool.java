@@ -70,7 +70,7 @@ public enum MapPool {
                     new Cell(6,11), new Cell(7,11), new Cell(8,11), new Cell(9,11),
                     new Cell(10,11))),
 
-    JUNGLE("src/main/resources/img/blocks/grass.png", "src/main/resources/img/blocks/green.png",
+    JUNGLE("src/main/resources/img/blocks/grass.png", "src/main/resources/img/blocks/darkGreen.png",
             new Cell(10, 6), new Cell(1, 4),
             Arrays.asList(new Cell(2,1), new Cell(3,1), new Cell(7,1), new Cell(9,1), new Cell(5,2),
                     new Cell(6,2), new Cell(7,2), new Cell(1,3), new Cell(2,3), new Cell(4,3),
