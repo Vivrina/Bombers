@@ -7,12 +7,10 @@
 <?import javafx.scene.layout.*?>
 
 <?import javafx.scene.image.ImageView?>
-<BorderPane fx:id="gameZone" xmlns="http://javafx.com/javafx"
+<AnchorPane fx:id="gameZone" xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="controller.GameController"
             prefHeight="1080.0" prefWidth="1920.0">
-
-    <center>
         <HBox fx:id="game">
             <VBox fx:id="messageControl1" prefHeight="1080.0" prefWidth="420.0">
                 <ScrollPane fx:id="messagesArea1">
@@ -45,11 +43,10 @@
             </VBox>
         </HBox>
 
-        <StackPane fx:id="waitingBlock">
+        <HBox fx:id="waitingBlock">
             <ImageView fx:id="loadingImage"   fitWidth="200.0" fitHeight="200.0"/>
-        </StackPane>
-    </center>
+        </HBox>
 
 
 
-</BorderPane>
+</AnchorPane>

@@ -68,7 +68,7 @@ public class GameController implements Initializable {
 
 
     @FXML
-    public BorderPane gameZone;
+    public AnchorPane gameZone;
 
     @FXML
     public HBox game;
@@ -112,7 +112,7 @@ public class GameController implements Initializable {
     private Button sendMessageButton1;
 
     @FXML
-    public StackPane waitingBlock;
+    public HBox waitingBlock;
 
     @FXML
     public ImageView loadingImage;
