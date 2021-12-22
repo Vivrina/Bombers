@@ -373,6 +373,11 @@ public class GameController implements Initializable {
 
     public void win(){
         gameTable.getChildren().remove(enemy);
+
+        gameZone.getScene().removeEventFilter(KeyEvent.KEY_PRESSED,getPlayerControlEvent());
+        Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(2), animation -> {}));
+        timeline.play();
+
         Message message = new Message();
         message.setType(MessageType.ACTION);
         message.setBody(Action.LOSE.getTitle());
@@ -399,6 +404,11 @@ public class GameController implements Initializable {
 
     public void lose(){
         gameTable.getChildren().remove(player);
+
+        gameZone.getScene().removeEventFilter(KeyEvent.KEY_PRESSED,getPlayerControlEvent());
+        Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(2), animation -> {}));
+        timeline.play();
+
         Message message = new Message();
         message.setType(MessageType.ACTION);
         message.setBody(Action.WIN.getTitle());
