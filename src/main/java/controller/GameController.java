@@ -410,8 +410,11 @@ public class GameController implements Initializable {
         gameTable.getChildren().remove(player);
 
         gameZone.getScene().removeEventFilter(KeyEvent.KEY_PRESSED,getPlayerControlEvent());
-        Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(2), animation -> {}));
-        timeline.play();
+        try {
+            TimeUnit.SECONDS.sleep(3);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
         Message message = new Message();
         message.setType(MessageType.ACTION);
