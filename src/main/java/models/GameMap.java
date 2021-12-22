@@ -31,6 +31,8 @@ public class GameMap {
     }
 
     public void addEdges(List<Cell> newEdges){
-        edges.addAll(newEdges);
+        for(Cell cell : newEdges){
+            edges.add(cell);
+        }
     }
 }
