@@ -118,8 +118,18 @@ public class ClientSocket extends Thread {
                         }
                         case("bomb"): {
                             ImageView enemy = gameController.getEnemy();
+                            Platform.runLater(() ->gameController.bomb(enemy));
                             break;
                         }
+                        case("lose"): {
+                            Platform.runLater(() ->gameController.lose());
+                            break;
+                        }
+                        case("win"): {
+                            Platform.runLater(() ->gameController.win());
+                            break;
+                        }
+
                     }
                     break;
             }

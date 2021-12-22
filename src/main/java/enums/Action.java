@@ -6,7 +6,9 @@ public enum Action {
     LEFT(1, "left", "Игрок передвинулся налево"),
     UP(2, "up", "Игрок передвинулся вверх"),
     DOWN(3, "down", "Игрок передвинулся вниз"),
-    BOMB(4, "bomb", "Игрок поставил бомбу");
+    BOMB(4, "bomb", "Игрок поставил бомбу"),
+    LOSE(5, "lose", "Игрок проиграл"),
+    WIN(5, "win", "Игрок победил");
 
     private final int code;
     private final String title;

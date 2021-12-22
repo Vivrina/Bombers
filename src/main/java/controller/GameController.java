@@ -5,7 +5,11 @@ import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
@@ -14,6 +18,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.*;
+import javafx.stage.Stage;
 import javafx.util.Duration;
 import models.Cell;
 import models.GameMap;
@@ -25,6 +30,7 @@ import sockets.ClientSocket;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLOutput;
 import java.util.*;
@@ -119,16 +125,21 @@ public class GameController implements Initializable {
     private Button sendMessageButton1;
 
     @FXML
-    public HBox waitingBlock;
+    public StackPane waitingBlock;
 
     @FXML
     public ImageView loadingImage;
+
+    @FXML
+    public ImageView bg0;
 
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         try {
             loadingImage.setImage(new Image(new FileInputStream("src/main/resources/img/gif/loading.gif")));
+            bg0.setImage(new Image(new FileInputStream("src/main/resources/img/bg5.png")));
+
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
@@ -343,11 +354,12 @@ public class GameController implements Initializable {
             if (i.get() == 7) {
                 if (checkDead(GridPane.getColumnIndex(player), GridPane.getRowIndex(player),
                         GridPane.getColumnIndex(bomb), GridPane.getRowIndex(bomb))) {
-                    gameTable.getChildren().remove(player);
+                    lose();
                 }
                 if (checkDead(GridPane.getColumnIndex(enemy), GridPane.getRowIndex(enemy),
                         GridPane.getColumnIndex(bomb), GridPane.getRowIndex(bomb))) {
                     gameTable.getChildren().remove(enemy);
+                    win();
                 }
             }
 
@@ -357,6 +369,57 @@ public class GameController implements Initializable {
         }));
         timeline.setCycleCount(9);
         timeline.play();
+    }
+
+    public void win(){
+        gameTable.getChildren().remove(enemy);
+        Message message = new Message();
+        message.setType(MessageType.ACTION);
+        message.setBody(Action.LOSE.getTitle());
+        clientSocket.sendMessage(message);
+
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/End.fxml"));
+        Stage stage=(Stage) gameZone.getScene().getWindow();
+        Parent root = null;
+        try {
+            root = fxmlLoader.load();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        Scene scene = new Scene(root);
+        EndController endController = fxmlLoader.getController();
+        stage.setScene(scene);
+        stage.setMaximized(true);
+        stage.setFullScreen(true);
+        endController.changeBG("src/main/resources/img/win.png");
+        stage.show();
+
+    }
+
+    public void lose(){
+        gameTable.getChildren().remove(player);
+        Message message = new Message();
+        message.setType(MessageType.ACTION);
+        message.setBody(Action.WIN.getTitle());
+        clientSocket.sendMessage(message);
+
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/End.fxml"));
+        Stage stage=(Stage) gameZone.getScene().getWindow();
+        Parent root = null;
+        try {
+            root = fxmlLoader.load();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        Scene scene = new Scene(root);
+        EndController endController = fxmlLoader.getController();
+        stage.setScene(scene);
+        stage.setMaximized(true);
+        stage.setFullScreen(true);
+        endController.changeBG("src/main/resources/img/lose.png");
+        stage.show();
     }
 
     boolean checkDead(int x1, int y1, int x2, int y2){

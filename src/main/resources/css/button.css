@@ -37,3 +37,7 @@
 #lobbyButton {
     -fx-background-image: url("/img/done.png");
 }
+
+#toTheMenu {
+    -fx-background-image: url("/img/done.png");
+}

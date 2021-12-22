@@ -187,8 +187,8 @@ public class MainController implements Initializable {
 
         Scene scene = new Scene(root);
         stage.setScene(scene);
-//        stage.setMaximized(true);
-//        stage.setFullScreen(true);
+        stage.setMaximized(true);
+        stage.setFullScreen(true);
         GameController gameController = fxmlLoader.getController();
         System.out.println(username + " " + lobbyCode + " " + cur_image + " " + cur_map);
         gameController.setPlayerUsername(username);

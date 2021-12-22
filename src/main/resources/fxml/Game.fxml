@@ -7,6 +7,7 @@
 <?import javafx.scene.layout.*?>
 
 <?import javafx.scene.image.ImageView?>
+<?import javafx.geometry.Insets?>
 <AnchorPane fx:id="gameZone" xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="controller.GameController"
@@ -43,9 +44,15 @@
             </VBox>
         </HBox>
 
-        <HBox fx:id="waitingBlock">
+    <StackPane fx:id="waitingBlock">
+        <ImageView fx:id="bg0"   fitWidth="1920" fitHeight="1080"/>
+        <HBox>
+            <padding>
+                <Insets top="450" left="800" />
+            </padding>
             <ImageView fx:id="loadingImage"   fitWidth="200.0" fitHeight="200.0"/>
         </HBox>
+    </StackPane>
 
 
 
